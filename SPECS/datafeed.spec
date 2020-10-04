@@ -1,6 +1,6 @@
 Name:       datafeed
 Version:    1
-Release:    4%{?dist}
+Release:    5%{?dist}
 Summary:    datafeed
 License:    FIXME
 
@@ -10,17 +10,21 @@ Requires(pre): shadow-utils
 This package is itended to deploy ssh authorized keys to the correct location for GFE to connect through ssh
 
 %prep
+
+git clone git@github.com:agrosshans/datafeed.git
+cd datafeed/
+
 if [ -d ${RPM_BUILD_DIR} ]; then
   rm -rf ${RPM_BUILD_DIR}/*
 else
   mkdir -p ${RPM_BUILD_DIR}
 fi
  
-%build
-if [ -d ${RPM_BUILD_DIR} ]; then
-  cd ${RPM_BUILD_DIR}
-  git clone git@github.com:agrosshans/datafeed.git
-fi
+# %build
+# if [ -d ${RPM_BUILD_DIR} ]; then
+#   cd ${RPM_BUILD_DIR}
+#   git clone git@github.com:agrosshans/datafeed.git
+# fi
 
 %install
 cd $RPM_BUILD_DIR/%{name}
@@ -79,3 +83,5 @@ done
     - Updated to ver. 1.3. Add user user5
   * Sun Oct 4 2020 Aurelien Grosshans <ngr@ubp.ch>
     - Updated to ver. 1.4. Add user user6
+  * Sun Oct 4 2020 Aurelien Grosshans <ngr@ubp.ch>
+    - Updated to ver. 1.5. Directory reorg
