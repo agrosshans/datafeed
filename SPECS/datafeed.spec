@@ -45,7 +45,7 @@ chown root:root /appli/sshkeys/
 cd /appli/sshkeys/
 for userdir in `ls`; do
   if ! getent passwd ${userdir} >/dev/null ; then
-      useradd -r -g sftpusers -c "${userdir} Datafeed User Id." -h /appli/FTP/${userdir} -m -s /sbin/nologin ${userdir}
+      useradd -r -g sftpusers -c "${userdir} Datafeed User Id." -d /appli/FTP/${userdir} -m -s /sbin/nologin ${userdir}
   fi
   chown ${userdir}:sftpusers /appli/sshkeys/${userdir}
   chown ${userdir}:sftpusers /appli/sshkeys/${userdir}/authorized_keys
