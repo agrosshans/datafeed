@@ -10,18 +10,19 @@ Requires(pre): shadow-utils
 This package is itended to deploy ssh authorized keys to the correct location for GFE to connect through ssh
 
 %prep
-
-if [ -d ${RPM_BUILD_DIR} ]; then
-  rm -rf ${RPM_BUILD_DIR}/*
-else
-  mkdir -p ${RPM_BUILD_DIR}
-fi
+find ${RPM_BUILD_DIR}/ -type d -name ".DS_Store" -exec rmdir {} \;
 
 %install
-cp -rp ${RPM_BUILD_DIR}/* $RPM_BUILD_ROOT/
+
+cd ${RPM_BUILD_DIR}
+for userdir in `find . -type f -name authorized_keys -exec dirname {} \; | sed -e 's/\.\///'`; do
+  mkdir -p ${RPM_BUILD_ROOT}/${userdir}
+  install -m600 ${RPM_BUILD_DIR}/${userdir}/authorized_keys ${RPM_BUILD_ROOT}/${userdir}/
+done
 
 %files
 %defattr(0600,-,sftpusers,0700)
+/appli/sshkeys/
 
 %clean
 if [ -d ${RPM_BUILD_DIR} ]; then
@@ -31,16 +32,6 @@ fi
 %pre
 mkdir -p /appli/sshkeys
 mkdir -p /appli/FTP
-
-#getent group sftpusers >/dev/null || groupadd -f -g 9999 -r sftpusers
-#chmod 0755 /appli/sshkeys/
-#chown root:root /appli/sshkeys/
-#cd /appli/sshkeys/
-#for userdir in `find . -type f -name authorized_keys -exec dirname {} \; | sed -e 's/\.\///'`; do
-#  if ! getent passwd ${userdir} >/dev/null ; then
-#      useradd -r -g sftpusers -c "${userdir} Datafeed User Id." -d /appli/FTP/${userdir} -m -s /sbin/nologin ${userdir}
-#  fi
-#done
 
 %post
 mkdir -p /appli/FTP/
