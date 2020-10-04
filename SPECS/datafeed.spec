@@ -30,7 +30,9 @@ fi
 cd $RPM_BUILD_DIR/%{name}
 for userdir in `find . -type f -name authorized_keys -exec dirname {} \; | sed -e 's/\.\///'`; do
   mkdir -p ${RPM_BUILD_ROOT}/appli/sshkeys/${userdir}
+  mkdir -p ${RPM_BUILD_ROOT}/appli/FTP/${userdir}
   install -m600 $RPM_BUILD_DIR/%{name}/${userdir}/authorized_keys $RPM_BUILD_ROOT/appli/sshkeys/${userdir}/
+  install -m700 $RPM_BUILD_ROOT/appli/FTP/${userdir}
 done
 
 mkdir -p ${RPM_BUILD_ROOT}/appli/sshkeys
