@@ -14,9 +14,10 @@ This package is itended to deploy ssh authorized keys to the correct location fo
 %install
 find ${RPM_BUILD_DIR}/ -type d -name ".DS_Store" -exec rmdir {} \;
 cd ${RPM_BUILD_DIR}
-for userdir in `find . -type f -name authorized_keys -exec dirname {} \; | sed -e 's/\.\///'`; do
-  mkdir -p ${RPM_BUILD_ROOT}/${userdir}
-  install -m600 ${RPM_BUILD_DIR}/${userdir}/authorized_keys ${RPM_BUILD_ROOT}/${userdir}/
+for userdir in `find . -type f -name authorized_keys -exec dirname {} \; | awk -F\/ '{ print $NF }'`; do
+  mkdir -p ${RPM_BUILD_ROOT}/appli/sshkeys/${userdir}
+  mkdir -p ${RPM_BUILD_ROOT}/appli/FTP/${userdir}
+  install -m600 ${RPM_BUILD_DIR}/appli/sshkeys/${userdir}/authorized_keys ${RPM_BUILD_ROOT}//appli/sshkeys/${userdir}/
 done
 
 %files
