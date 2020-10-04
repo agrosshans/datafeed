@@ -10,10 +10,9 @@ Requires(pre): shadow-utils
 This package is itended to deploy ssh authorized keys to the correct location for GFE to connect through ssh
 
 %prep
-find ${RPM_BUILD_DIR}/ -type d -name ".DS_Store" -exec rmdir {} \;
 
 %install
-
+find ${RPM_BUILD_DIR}/ -type d -name ".DS_Store" -exec rmdir {} \;
 cd ${RPM_BUILD_DIR}
 for userdir in `find . -type f -name authorized_keys -exec dirname {} \; | sed -e 's/\.\///'`; do
   mkdir -p ${RPM_BUILD_ROOT}/${userdir}
@@ -25,9 +24,9 @@ done
 /appli/sshkeys/
 
 %clean
-if [ -d ${RPM_BUILD_DIR} ]; then
-  rm -rf ${RPM_BUILD_DIR}
-fi
+# if [ -d ${RPM_BUILD_DIR} ]; then
+#   rm -rf ${RPM_BUILD_DIR}
+# fi
 
 %pre
 mkdir -p /appli/sshkeys
