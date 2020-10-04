@@ -1,6 +1,6 @@
 Name:       datafeed
 Version:    1
-Release:    5%{?dist}
+Release:    7%{?dist}
 Summary:    datafeed
 License:    FIXME
 
@@ -24,9 +24,9 @@ done
 /appli/sshkeys/
 
 %clean
-# if [ -d ${RPM_BUILD_DIR} ]; then
-#   rm -rf ${RPM_BUILD_DIR}
-# fi
+if [ -d ${RPM_BUILD_DIR} ]; then
+  rm -rf ${RPM_BUILD_DIR}
+fi
 
 %pre
 mkdir -p /appli/sshkeys
@@ -59,3 +59,5 @@ done
     - Updated to ver. 1.4. Add user user6
   * Sun Oct 4 2020 Aurelien Grosshans <ngr@ubp.ch>
     - Updated to ver. 1.5. Directory reorg
+  * Sun Oct 4 2020 Aurelien Grosshans <ngr@ubp.ch>
+    - Updated to ver. 1.7. Add user user7
