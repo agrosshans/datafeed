@@ -18,7 +18,7 @@ for userdir in `find . -type f -name authorized_keys -exec dirname {} \; | awk -
   mkdir -p ${RPM_BUILD_ROOT}/appli/sshkeys/${userdir}
   mkdir -p ${RPM_BUILD_ROOT}/appli/FTP/${userdir}
   install -m600 ${RPM_BUILD_DIR}/appli/sshkeys/${userdir}/authorized_keys ${RPM_BUILD_ROOT}/appli/sshkeys/${userdir}/
-  install -m700 ${RPM_BUILD_DIR}/appli/FTP/${userdir}/.created ${RPM_BUILD_ROOT}/appli/FTP/${userdir}/
+  install -m600 ${RPM_BUILD_DIR}/appli/FTP/${userdir}/.created            ${RPM_BUILD_ROOT}/appli/FTP/${userdir}/
 done
 
 %files
