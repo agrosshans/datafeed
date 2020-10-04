@@ -1,6 +1,6 @@
 Name:       datafeed
 Version:    1
-Release:    7%{?dist}
+Release:    8%{?dist}
 Summary:    datafeed
 License:    FIXME
 
@@ -64,3 +64,5 @@ done
     - Updated to ver. 1.5. Directory reorg
   * Sun Oct 4 2020 Aurelien Grosshans <ngr@ubp.ch>
     - Updated to ver. 1.7. Add user user7
+  * Sun Oct 4 2020 Aurelien Grosshans <ngr@ubp.ch>
+    - Updated to ver. 1.8. modify useradd
