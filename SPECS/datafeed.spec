@@ -1,6 +1,6 @@
 Name:       datafeed
 Version:    1
-Release:    11%{?dist}
+Release:    2%{?dist}
 Summary:    datafeed
 License:    FIXME
 
@@ -55,20 +55,6 @@ done
 
 %changelog
   * Sun Oct 4 2020 Aurelien Grosshans <ngr@ubp.ch>
-    - Updated to ver. 1.2. Add user toto
+    - Updated to ver. 1.1. Add user1
   * Sun Oct 4 2020 Aurelien Grosshans <ngr@ubp.ch>
-    - Updated to ver. 1.3. Add user user5
-  * Sun Oct 4 2020 Aurelien Grosshans <ngr@ubp.ch>
-    - Updated to ver. 1.4. Add user user6
-  * Sun Oct 4 2020 Aurelien Grosshans <ngr@ubp.ch>
-    - Updated to ver. 1.5. Directory reorg
-  * Sun Oct 4 2020 Aurelien Grosshans <ngr@ubp.ch>
-    - Updated to ver. 1.7. Add user user7
-  * Sun Oct 4 2020 Aurelien Grosshans <ngr@ubp.ch>
-    - Updated to ver. 1.8. modify useradd
-  * Sun Oct 4 2020 Aurelien Grosshans <ngr@ubp.ch>
-    - Updated to ver. 1.9. modify defattr
-  * Sun Oct 4 2020 Aurelien Grosshans <ngr@ubp.ch>
-    - Updated to ver. 1.10. Add user user8
-  * Sun Oct 4 2020 Aurelien Grosshans <ngr@ubp.ch>
-    - Updated to ver. 1.11. Remove user user3
+    - Updated to ver. 1.2. Add user2
