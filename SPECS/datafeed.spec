@@ -1,6 +1,6 @@
 Name:       datafeed
 Version:    1
-Release:    8%{?dist}
+Release:    9%{?dist}
 Summary:    datafeed
 License:    FIXME
 
@@ -22,7 +22,7 @@ for userdir in `find . -type f -name authorized_keys -exec dirname {} \; | awk -
 done
 
 %files
-%defattr(0600,-,sftpusers,0700)
+%defattr(0600,root,sftpusers,0700)
 /appli/sshkeys/
 /appli/FTP/
 
@@ -66,3 +66,5 @@ done
     - Updated to ver. 1.7. Add user user7
   * Sun Oct 4 2020 Aurelien Grosshans <ngr@ubp.ch>
     - Updated to ver. 1.8. modify useradd
+  * Sun Oct 4 2020 Aurelien Grosshans <ngr@ubp.ch>
+    - Updated to ver. 1.9. modify defattr
