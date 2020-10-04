@@ -1,0 +1,23 @@
+# rpm build settings
+
+# directory overrides
+%_topdir         /var/lib/jenkins/workspace/Datafeed/
+%_tmppath        %(echo $HOME)/rpmbuild/tmp
+
+# package signature add automatically (name as assigned, for example, by GnuPG)
+# packages can be signed later with `rpm --resign`
+%_signature      gpg
+%_gpg_path	/usr/share/tomcat/.gnupg
+%_gpg_name       Package Manager (RPM Signing Key)
+%_gpgbin	/bin/gpg
+%__gpg_sign_cmd %{__gpg} gpg --force-v3-sigs --batch --verbose --no-armor --no-secmem-warning -u "%{_gpg_name}" -sbo %{__signature_filename} --digest-algo sha256 %{__plaintext_filename}'
+
+# packager, distributor, and vendor override
+# for vendor consider using personal name
+%packager        Aurelien Grosshans <ngr@ubp.ch>
+
+# distribution name suffix override
+#%distsuffix      mga
+
+# distribution name override
+#%dis             mageia
