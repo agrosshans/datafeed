@@ -26,7 +26,6 @@ fi
 # fi
 
 %install
-cd $RPM_BUILD_DIR/%{name}
 cp -rp ${RPM_BUILD_DIR}/* $RPM_BUILD_ROOT/
 
 %files
