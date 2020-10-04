@@ -40,9 +40,9 @@ groupadd -g 9999 sftpusers
 chmod 0755 /appli/sshkeys/
 chown root:root /appli/sshkeys/
 cd /appli/sshkeys/
-for userdir in `find . -type f -name authorized_keys -exec dirname {} \; | sed -e 's/\.\///'`; do
+for userdir in `ls`; do
   if ! getent passwd ${userdir} >/dev/null ; then
-      useradd -r -g sftpusers -c "${userdir} Datafeed User Id." --base-dir /appli/FTP -m -s /sbin/nologin ${userdir}
+      useradd -r -g sftpusers -c "${userdir} Datafeed User Id." -h /appli/FTP/${userdir} -m -s /sbin/nologin ${userdir}
   fi
   chown ${userdir}:sftpusers /appli/sshkeys/${userdir}
   chown ${userdir}:sftpusers /appli/sshkeys/${userdir}/authorized_keys
