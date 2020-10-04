@@ -10,20 +10,12 @@ Requires(pre): shadow-utils
 This package is itended to deploy ssh authorized keys to the correct location for GFE to connect through ssh
 
 %prep
-git clone git@github.com:agrosshans/datafeed.git
-cd datafeed/
 
 if [ -d ${RPM_BUILD_DIR} ]; then
   rm -rf ${RPM_BUILD_DIR}/*
 else
   mkdir -p ${RPM_BUILD_DIR}
 fi
- 
-# %build
-# if [ -d ${RPM_BUILD_DIR} ]; then
-#   cd ${RPM_BUILD_DIR}
-#   git clone git@github.com:agrosshans/datafeed.git
-# fi
 
 %install
 cp -rp ${RPM_BUILD_DIR}/* $RPM_BUILD_ROOT/
